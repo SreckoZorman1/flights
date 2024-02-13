@@ -1,5 +1,5 @@
 import {MigrationInterface, QueryRunner} from "typeorm";
-import { Users, Role } from '../entity/Users';
+import { Users } from '../entity/Users';
 import { hashPassword } from '../subscribers/UsersSubscriber';
 
 export class UsersSeed1646137371088 implements MigrationInterface {
@@ -10,7 +10,6 @@ export class UsersSeed1646137371088 implements MigrationInterface {
         user.email = 'admin@flatlogic.com';
         user.provider = 'local';
         user.password = hashPassword('password');
-        user.role = Role.Admin;
         user.emailVerified = true;
         await queryRunner.connection.getRepository(Users).save(user);
 
@@ -19,7 +18,6 @@ export class UsersSeed1646137371088 implements MigrationInterface {
         john.email = 'john@doe.com';
         john.provider = 'local';
         john.password = hashPassword('password');
-        john.role = Role.User;
         john.emailVerified = true;
         await queryRunner.connection.getRepository(Users).save(john);
 
@@ -28,7 +26,6 @@ export class UsersSeed1646137371088 implements MigrationInterface {
         client.email = 'client@hello.com';
         client.provider = 'local';
         client.password = hashPassword('password');
-        client.role = Role.User;
         client.emailVerified = true;
         await queryRunner.connection.getRepository(Users).save(client);
     }

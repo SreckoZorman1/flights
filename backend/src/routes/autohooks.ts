@@ -2,7 +2,7 @@ import { FastifyInstance, FastifyRequest } from 'fastify';
 import { getCustomRepository } from 'typeorm';
 
 import { UsersRepository } from '../repository/UsersRepository';
-import { Role, Users } from '../entity/Users';
+import { Users } from '../entity/Users';
 
 export default async function (app: FastifyInstance) {
     app.decorate('verifyAuthorized', async (req: FastifyRequest) => {
@@ -14,7 +14,7 @@ export default async function (app: FastifyInstance) {
 
     app.decorate('verifyAdmin', async (req: FastifyRequest) => {
         const { user: payload } = await req.jwtVerify<{ user: Users }>();
-        const status = await getCustomRepository(UsersRepository).hasRole(payload.id, Role.Admin);
+        const status = await getCustomRepository(UsersRepository).hasRole(payload.id, 'admin');
         if (!status) {
             throw app.httpErrors.forbidden();
         }

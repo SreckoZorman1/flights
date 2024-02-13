@@ -135,50 +135,6 @@ function Sidebar({ location, structure }) {
 
         {
           <SidebarLink
-            label='Aircrafts data'
-            link='/admin/aircrafts_data'
-            location={location}
-            isSidebarOpened={isSidebarOpenedWrapper}
-            icon={<CoreIcon />}
-            toggleDrawer={toggleDrawer(true)}
-          />
-        }
-
-        {
-          <SidebarLink
-            label='Airports data'
-            link='/admin/airports_data'
-            location={location}
-            isSidebarOpened={isSidebarOpenedWrapper}
-            icon={<CoreIcon />}
-            toggleDrawer={toggleDrawer(true)}
-          />
-        }
-
-        {
-          <SidebarLink
-            label='Flights'
-            link='/admin/flights'
-            location={location}
-            isSidebarOpened={isSidebarOpenedWrapper}
-            icon={<CoreIcon />}
-            toggleDrawer={toggleDrawer(true)}
-          />
-        }
-
-        {
-          <SidebarLink
-            label='Seats'
-            link='/admin/seats'
-            location={location}
-            isSidebarOpened={isSidebarOpenedWrapper}
-            icon={<CoreIcon />}
-            toggleDrawer={toggleDrawer(true)}
-          />
-        }
-
-        {
-          <SidebarLink
             label='API docs'
             link='/admin/api-docs'
             location={location}

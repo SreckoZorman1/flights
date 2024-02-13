@@ -160,7 +160,6 @@ export default async (app: FastifyInstance) => {
 
         const { id } = await repo.save({
             ...payload,
-            // @ts-ignore
 
         });
 
@@ -237,7 +236,6 @@ export default async (app: FastifyInstance) => {
 
         await repo.save({
             ...payload,
-            // @ts-ignore
 
             id: req.params.id,
         });

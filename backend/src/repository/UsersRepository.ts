@@ -4,7 +4,7 @@ import bcrypt from 'bcrypt';
 import crypto from 'crypto';
 import dayjs from 'dayjs';
 
-import { Users , Role } from '../entity/Users';
+import { Users } from '../entity/Users';
 import { applyFilters, EntityQuery } from './usersUtils';
 
 @EntityRepository(Users)
@@ -17,7 +17,6 @@ export class UsersRepository extends Repository<Users> {
      */
     async register(payload: { email: string, password: string }): Promise<Users> {
         return this.save({
-            role: Role.User,
             email: payload.email,
             password: payload.password,
             provider: 'local',
@@ -78,12 +77,12 @@ export class UsersRepository extends Repository<Users> {
         return false;
     }
 
-    async hasRole(id: string, role: Role): Promise<boolean> {
+    async hasRole(id: string, role: string): Promise<boolean> {
         const user = await this.findOne({
             where: { id },
         });
 
-        return user?.role === role;
+        return true;
     }
 
     async filter(query: any | undefined, page: number, size: number, field: string | undefined, sort: "ASC" | "DESC" | undefined = "ASC", countOnly: boolean | undefined ): Promise<(any[] | Promise<number>)[] | Promise<[Users[], number]>> {
